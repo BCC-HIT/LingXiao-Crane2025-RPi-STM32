@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- 请在这里配置你的Webhook地址 ---
-WEBHOOK_URL="https://open.feishu.cn/open-apis/bot/v2/hook/4668ae9b-c829-4b3b-ae4e-b803203a9a6d"
+WEBHOOK_URL="https://open.feishu.cn/open-apis/bot/v2/hook/"
 
 # --- 信息收集 ---
 

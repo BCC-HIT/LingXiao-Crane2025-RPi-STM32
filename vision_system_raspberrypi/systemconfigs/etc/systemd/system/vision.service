@@ -1,0 +1,16 @@
+[Unit]
+Description=Vision System
+After=local-fs.target
+
+[Service]
+ExecStart=/home/pi/.pyenv/versions/3.9.13/bin/python3 /home/pi/code/main.py --continuous-matching --quiet
+WorkingDirectory=/home/pi/code
+StandardOutput=journal
+StandardError=journal
+Restart=always
+RestartSec=3
+User=pi
+Group=pi
+
+[Install]
+WantedBy=basic.target

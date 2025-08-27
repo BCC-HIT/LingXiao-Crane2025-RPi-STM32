@@ -1,0 +1,102 @@
+{
+    "camera": {
+        "shelf_camera_device": "/dev/camera_shelf",
+        "area_camera_device": "/dev/camera_area",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "capture_count": 2,
+        "default_capture_interval_ms": 50,
+        "auto_exposure": true,
+        "auto_white_balance": true,
+        "brightness": 0,
+        "contrast": 32,
+        "saturation": 64,
+        "hue": 0,
+        "gamma": 100,
+        "gain": 0,
+        "sharpness": 2,
+        "power_line_frequency": 1,
+        "white_balance_temperature": 4600,
+        "backlight_compensation": 1,
+        "exposure_time_absolute": 157,
+        "exposure_dynamic_framerate": true,
+        "use_v4l2_controls": true
+    },
+    "yolo": {
+        "shelf_model_path": "/home/pi/code/models/yolov12m_shelf_960.pt",
+        "area_model_path": "/home/pi/code/models/yolov12m_area_1280.pt",
+        "shelf_confidence_threshold": 0.567,
+        "area_confidence_threshold": 0.524,
+        "nms_threshold": 0.4,
+        
+        "_comment_consensus": "Consensus algorithm configuration",
+        "consensus_method": "voting",
+        "min_consensus_count": 2,
+        
+        "_comment_continuous_matching": "Continuous matching mode configuration",
+        "continuous_matching": {
+            "enabled": true,
+            "required_matches": 1,
+            "check_interval": 0.2,
+            "send_every_match": true,
+            "_comment": "required_matches: Number of consecutive identical results required; check_interval: Detection interval (seconds); send_every_match: Whether to send every time after requirement is met"
+        },
+        
+        "device": "cpu",
+        "shelf_inference_size": 960,
+        "area_inference_size": 1280,
+        
+        "shelf_position_mapping": {
+            "y_upper_lower_split": 0.50,
+            "x_left_split": 0.33,
+            "x_right_split": 0.67
+        },
+        "area_position_mapping": {
+            "x_splits": [0.2, 0.35, 0.5, 0.65, 0.8]
+        }
+    },
+    "uart": {
+        "port": "/dev/ttyAMA0",
+        "baudrate": 9600,
+        "stopbits": 2,
+        "timeout": 0.5,
+        "retry_count": 3,
+        "retry_delay": 0.2,
+        "message_end": "\n",
+        "_comment_signal_control": "Signal control functionality configuration",
+        "enable_signal_control": true,
+        "enable_pause_control": true,
+        "start_signal": "START",
+        "pause_signal": "PAUSE",
+        "resume_signal": "RESUME",
+        "stop_signal": "STOP",
+        "_comment_request_signals": "Request signal configuration for getting last and perfect results",
+        "request_last_result_signal": "REQUEST",
+        "perfect_result_signal": "PERFECT",
+        "signal_check_interval": 0.1,
+        "_comment_perfect_criteria": "PERFECT result criteria: Shelf (1-6) must contain all digits 1-6 exactly once with no 'x'. Area (a-f) must contain exactly one empty position (0 or x) and five unique digits 1-6."
+    },
+    "system": {
+        "auto_mode": true,
+        "run_interval": 0.3,
+        "max_retries": 3,
+        "save_debug_images": false,
+        "log_level": "INFO",
+        "result_send_count": 2,
+        "result_send_interval": 0.1,
+        "wait_for_start_signal": false,
+        "auto_start_timeout": 30,
+        "pause_between_cycles": false
+    },
+    "visual": {
+        "display_width": 960,
+        "display_height": 540,
+        "font_scale": 0.8,
+        "line_thickness": 2,
+        "text_color": [0, 255, 0],
+        "bbox_color": [255, 0, 0],
+        "confidence_threshold_display": 0.3,
+        "preview_fps": 3
+    }
+}

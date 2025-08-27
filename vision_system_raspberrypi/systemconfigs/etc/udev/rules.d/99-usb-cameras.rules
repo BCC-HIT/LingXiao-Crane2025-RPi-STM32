@@ -1,0 +1,13 @@
+# Camera for Shelf (via USB controller path 1f00300000.usb, targeting index 0)
+SUBSYSTEM=="video4linux", KERNEL=="video*", \
+ATTR{name}=="USB 2.0 Camera: HD USB Camera", \
+ATTR{index}=="0", \
+DEVPATH=="*/1f00300000.usb/*", \
+SYMLINK+="camera_shelf", MODE="0666", GROUP="video"
+
+# Camera for Area (via USB controller path 1f00200000.usb, targeting index 0)
+SUBSYSTEM=="video4linux", KERNEL=="video*", \
+ATTR{name}=="USB 2.0 Camera: HD USB Camera", \
+ATTR{index}=="0", \
+DEVPATH=="*/1f00200000.usb/*", \
+SYMLINK+="camera_area", MODE="0666", GROUP="video"
